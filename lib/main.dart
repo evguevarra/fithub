@@ -1,5 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fit_hub/screens/login-screen.dart';
+import 'package:fit_hub/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'FitHub',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
+      
         primarySwatch: Colors.grey,
       ),
       home: const LoginScreen(),

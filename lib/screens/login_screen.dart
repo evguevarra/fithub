@@ -1,3 +1,5 @@
+import 'package:fit_hub/screens/signup_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -66,9 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 40,
             ),
             RichText(
-              text: const TextSpan(
+              text: TextSpan(
                 children: [
-                  TextSpan(
+                  const TextSpan(
                     text: 'Not yet a member?',
                     style: TextStyle(
                       color: Colors.grey,
@@ -76,8 +78,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextSpan(
                     text: ' Signup here',
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontWeight: FontWeight.w500),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => const SignupScreen()));
+                      },
                   ),
                 ],
               ),
@@ -89,7 +96,6 @@ class _LoginScreenState extends State<LoginScreen> {
               'or',
               style: TextStyle(color: Colors.grey),
             ),
-            
           ],
         ),
       ),
@@ -99,16 +105,20 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildForm() {
     return Form(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
           children: [
             TextFormField(
               decoration: const InputDecoration(
-                //border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
                 hintText: 'Email Address',
+                hintStyle: TextStyle(color: Colors.grey),
                 prefixIcon: Icon(
                   Icons.email,
                   size: 20,
+                  color: Colors.grey,
                 ),
               ),
             ),
@@ -117,10 +127,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextFormField(
               decoration: const InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
                 hintText: 'Password',
+                hintStyle: TextStyle(color: Colors.grey),
                 prefixIcon: Icon(
                   Icons.lock,
                   size: 20,
+                  color: Colors.grey,
                 ),
               ),
             ),
